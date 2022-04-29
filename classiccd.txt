@@ -1,0 +1,62 @@
+
+import resources.Script1Helper;
+import com.rational.test.ft.*;
+import com.rational.test.ft.object.interfaces.*;
+import com.rational.test.ft.object.interfaces.SAP.*;
+import com.rational.test.ft.object.interfaces.WPF.*;
+import com.rational.test.ft.object.interfaces.dojo.*;
+import com.rational.test.ft.object.interfaces.siebel.*;
+import com.rational.test.ft.object.interfaces.flex.*;
+import com.rational.test.ft.object.interfaces.generichtmlsubdomain.*;
+import com.rational.test.ft.script.*;
+import com.rational.test.ft.value.*;
+import com.rational.test.ft.vp.*;
+import com.ibm.rational.test.ft.object.interfaces.sapwebportal.*;
+/**
+ * Description   : Functional Test Script
+ * @author shasmita.swain
+ */
+public class Script1 extends Script1Helper
+{
+	/**
+	 * Script Name   : <b>Script1</b>
+	 * Generated     : <b>Apr 29, 2022 2:54:31 PM</b>
+	 * Description   : Functional Test Script
+	 * Original Host : WinNT Version 10.0  Build 19043 ()
+	 * 
+	 * @since  2022/04/29
+	 * @author shasmita.swain
+	 */
+	public void testMain(Object[] args) 
+	{
+		startApp("ClassicsJavaA");
+		
+		// Frame: ClassicsCD
+		tree2().click(atPath("Composers->Schubert->Location(PLUS_MINUS)"));
+		tree2().click(atPath("Composers->Schubert->String Quartets Nos. 4 & 14"));
+		placeOrder().click();
+		
+		// Frame: Member Logon
+		ok().click();
+		
+		// Frame: Place an Order
+		cardNumberIncludeTheSpaces().click(atPoint(44,8));
+		placeAnOrder().inputKeys("00{BKSP}{BKSP}9988998800000000");
+		expirationDate().click(atPoint(11,9));
+		placeAnOrder().inputChars("12/23");
+		placeAnOrder().inputKeys("{BKSP}2");
+		placeOrder2().click();
+		
+		// Frame: ClassicsCD
+		classicsCD(ANY,DISABLED).clickDisabled();
+		
+		// 
+		ok2().click();
+		
+		// Frame: ClassicsCD
+		classicsCD(ANY,MAY_EXIT).close();
+		
+		
+	}
+}
+
